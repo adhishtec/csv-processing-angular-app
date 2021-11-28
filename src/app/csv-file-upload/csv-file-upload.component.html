@@ -1,0 +1,32 @@
+<div class="csv-parser-container">
+  <header>CSV File Parser</header>
+  <div class="form-container">
+    <form [formGroup]="myForm">
+      <div class="form-group">
+        <input
+          formControlName="file"
+          id="file"
+          type="file"
+          class="form-control"
+          (change)="onFileChange($event)"
+        />
+      </div>
+    </form>
+    <div class="file-result" *ngIf="fileContent">
+      <h3>Input file:</h3>
+      <pre>{{ fileContent }}</pre>
+    </div>
+    <div *ngIf="outputFileList?.length" class="file-result output">
+      <h3>File content split in array:</h3>
+      <div *ngFor="let oneElement of outputFileList">
+        <div>{{ oneElement }}</div>
+      </div>
+    </div>
+    <div *ngIf="treeArray?.length" class="file-result output">
+      <h3>Unique file content added in tree with occurance count:</h3>
+      <div *ngFor="let oneElement of treeArray">
+        <div>{{ oneElement.data }} {{ oneElement.count }}</div>
+      </div>
+    </div>
+  </div>
+</div>
